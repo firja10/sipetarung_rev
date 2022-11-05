@@ -84,4 +84,6 @@ Route::post('/pengaduan/store', [App\Http\Controllers\PengaduanController::class
 
 /// Halaman TABG
 
+Route::get('/tabg', [App\Http\Controllers\TabgController::class, 'index'])->name('tabg_index')->middleware('auth');
+Route::get('/tabg/search_data', [App\Http\Controllers\TabgController::class, 'search_tabg'])->name('search_tabg')->middleware('auth');
 
