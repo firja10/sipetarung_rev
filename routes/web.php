@@ -37,3 +37,11 @@ Route::get('/menara', [App\Http\Controllers\TowerController::class, 'index'])->n
 
 Route::get('/menara/search_data', [App\Http\Controllers\TowerController::class, 'search_tower'])->name('search_tower')->middleware('auth');
 
+
+
+
+//// Halaman SKRK-IMB
+Route::get('/skrk-imb', [App\Http\Controllers\SkrkController::class, 'index'])->name('skrk_index')->middleware('auth');
+Route::get('/skrk-imb/search_data', [App\Http\Controllers\SkrkController::class, 'search_imb'])->name('search_imb')->middleware('auth');
+
+
