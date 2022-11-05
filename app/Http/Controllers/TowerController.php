@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tower;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use Yajra\DataTables;
 
 class TowerController extends Controller
 {
@@ -80,7 +82,41 @@ class TowerController extends Controller
                     ->make(true);
         }
 
+
+        // return Response
+
     }
+
+
+
+
+
+    public function search_tower(Request $request)
+    {
+        # code...
+        $kolom1 = $request->get('kolom');
+        $nilai1 = $request->get('nilai');
+
+
+        $kolom2 = $request->get('kolom2');
+        $nilai2 = $request->get('nilai2');
+
+
+        $kolom3 = $request->get('kolom3');
+        $nilai3 = $request->get('nilai3');
+
+
+        $data_search = DB::table('tower_surabaya')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
+
+        return view('menara.index_search', compact('data_search'));
+
+
+    }
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

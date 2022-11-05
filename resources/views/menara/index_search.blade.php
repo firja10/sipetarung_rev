@@ -48,9 +48,7 @@ Data Menara Sipetarung
                     <form action="{{route("search_tower")}}" id="input-search" method="get">
                     <div class="row">
                       
-                      
-
-
+                
 
                     <div class = "d-flex justify-content-between">
                       <div class = "d-flex justify-content-start mr-4">
@@ -248,7 +246,7 @@ Data Menara Sipetarung
                   </thead>
                   <tbody>
              
-                    @foreach ($tower as $towers)
+                    @foreach ($data_search as $towers)
                     <tr>
                         <td>{{$towers->gid}}</td>
                         <td>{{$towers->sk_imb}}</td>

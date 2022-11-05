@@ -33,4 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/menara', [App\Http\Controllers\TowerController::class, 'index'])->name('tower_index')->middleware('auth');
 
+// Route::get('/menara/search_data', [App\Http\Controllers\TowerController::class, 'search_data'])->name('search_data')->middleware('auth');
+
+Route::get('/menara/search_data', [App\Http\Controllers\TowerController::class, 'search_tower'])->name('search_tower')->middleware('auth');
 
