@@ -57,6 +57,10 @@ class PenertibanController extends Controller
 
 
 
+    
+
+
+
     public function tambah_penertiban()
     {
         # code...
@@ -76,11 +80,9 @@ class PenertibanController extends Controller
         $tahapan7 = Tahapan::all()->where('jenis_id', '=', 7);
         $tahapan8 = Tahapan::all()->where('jenis_id', '=', 8);
         $tahapan9 = Tahapan::all()->where('jenis_id', '=', 9);
-        return view('home2'
+        return view('penertiban.create'
         , compact('jenis', 'tahapan1', 'tahapan2', 'tahapan3', 'tahapan4', 'tahapan5', 'tahapan6', 'tahapan7', 'tahapan8', 'tahapan9')
         );
-
-
 
     }
 

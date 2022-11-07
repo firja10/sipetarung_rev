@@ -46,7 +46,7 @@ Data Sipetarung
 
 
               <div class="col-md-3 col-sm-6 col-12">
-                  <a href="http://localhost/sipetarung/menara/public" target="_blank">
+                  <a href="{{url('/menara')}}" target="_blank">
                   <div class="info-box">
                       <span class="info-box-icon bg-success"><i class="fas fa-broadcast-tower"></i></span>
                       <div class="info-box-content">
@@ -57,7 +57,7 @@ Data Sipetarung
                   </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                  <a href="http://localhost/sipetarung/skrk-imb/public" target="_blank">
+                  <a href="{{url('/skrk-imb')}}" target="_blank">
                   <div class="info-box">
                       <span class="info-box-icon bg-warning"><i class="fas fa-building"></i></span>
                       <div class="info-box-content">
@@ -68,7 +68,7 @@ Data Sipetarung
                   </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                  <a href="http://localhost/sipetarung/penertiban/public}" target="_blank">
+                  <a href="{{url('/penertiban')}}" target="_blank">
                   <div class="info-box">
                       <span class="info-box-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></i></span>
                       <div class="info-box-content">
@@ -79,7 +79,7 @@ Data Sipetarung
                   </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                  <a href="http://localhost/sipetarung/pengaduan/public" target="_blank">
+                  <a href="{{url('/pengaduan')}}" target="_blank">
                   <div class="info-box">
                       <span class="info-box-icon bg-danger"><i class="fas fa-exclamation-circle"></i></span>
                       <div class="info-box-content">
@@ -90,7 +90,7 @@ Data Sipetarung
                   </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                <a href="http://localhost/sipetarung/slf/public" target="_blank">
+                <a href="{{url('/slf')}}" target="_blank">
                 <div class="info-box">
                     <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
                     <div class="info-box-content">
@@ -101,7 +101,7 @@ Data Sipetarung
                 </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                <a href="http://localhost/sipetarung/pertelaan/public" target="_blank">
+                <a href="{{url('/pertelaan')}}" target="_blank">
                 <div class="info-box">
                     <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
                     <div class="info-box-content">
@@ -112,7 +112,7 @@ Data Sipetarung
                 </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                <a href="http://localhost/sipeatrung/tabg/public" target="_blank">
+                <a href="{{url('/tabg')}}" target="_blank">
                 <div class="info-box">
                     <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
                     <div class="info-box-content">
