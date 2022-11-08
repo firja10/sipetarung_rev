@@ -145,10 +145,25 @@ class TowerController extends Controller
      * @param  \App\Models\Tower  $tower
      * @return \Illuminate\Http\Response
      */
-    public function show(Tower $tower)
+    // public function show(Tower $tower)
+    // {
+    //     //
+    // }
+
+
+    public function show($id)
     {
         //
+
+        $tower = Tower::findOrFail($id);
+
+        return view('menara.show', compact('tower'));
+
+
+
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -259,7 +259,7 @@ Data Menara Sipetarung
                         <td>{{$towers->tinggi_tower}}</td>
                         <td>{{$towers->alamat_tower}}</td>
                         <td>{{$towers->sk_skrk}}</td>
-                        <td><button class = "btn btn-secondary mr-2">View</button> <button class="btn btn-primary">Update</button></td>
+                        <td> <center> <br><a class = "btn btn-secondary mb-2" href = "{{route('menara_id',$towers->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditMenara">Update</button> </center></td>
 
                     </tr>
                         

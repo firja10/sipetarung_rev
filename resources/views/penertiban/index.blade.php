@@ -197,7 +197,7 @@ Data Penertiban
                       </form>
 
 
-                      <a type="button" href="{{asset('/create')}}" class="btn btn-success">Tambah data</a>
+                      <a type="button" href="{{url('/penertiban/tambah_data')}}" class="btn btn-success">Tambah data</a>
 
                     </center>
                     

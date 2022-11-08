@@ -36,6 +36,9 @@ Route::get('/menara', [App\Http\Controllers\TowerController::class, 'index'])->n
 // Route::get('/menara/search_data', [App\Http\Controllers\TowerController::class, 'search_data'])->name('search_data')->middleware('auth');
 
 Route::get('/menara/search_data', [App\Http\Controllers\TowerController::class, 'search_tower'])->name('search_tower')->middleware('auth');
+Route::get('/menara/{id}', [App\Http\Controllers\TowerController::class, 'show'])->name('menara_id')->middleware('auth');
+
+
 
 
 
@@ -77,7 +80,7 @@ Route::get('/pengaduan/search_data', [App\Http\Controllers\PengaduanController::
 
 Route::get('/pengaduan/tambah_data', [App\Http\Controllers\PengaduanController::class, 'tambah_pengaduan'])->name('tambah_pengaduan')->middleware('auth');
 
-Route::post('/pengaduan/store', [App\Http\Controllers\PengaduanController::class, 'store_pengaudan'])->name('store_pengaduan')->middleware('auth');
+Route::post('/pengaduan/store', [App\Http\Controllers\PengaduanController::class, 'store_pengaduan'])->name('store_pengaduan')->middleware('auth');
 
 
 
