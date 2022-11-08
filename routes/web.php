@@ -46,6 +46,7 @@ Route::get('/menara/{id}', [App\Http\Controllers\TowerController::class, 'show']
 //// Halaman SKRK-IMB
 Route::get('/skrk-imb', [App\Http\Controllers\SkrkController::class, 'index'])->name('skrk_index')->middleware('auth');
 Route::get('/skrk-imb/search_data', [App\Http\Controllers\SkrkController::class, 'search_imb'])->name('search_imb')->middleware('auth');
+Route::get('/skrk-imb/{id}', [App\Http\Controllers\SkrkController::class, 'show'])->name('skrk_imb_id')->middleware('auth');
 
 
 
@@ -53,12 +54,15 @@ Route::get('/skrk-imb/search_data', [App\Http\Controllers\SkrkController::class,
 //// Halaman SLF 
 Route::get('/slf', [App\Http\Controllers\SlfController::class, 'index'])->name('slf_index')->middleware('auth');
 Route::get('/slf/search_data', [App\Http\Controllers\SlfController::class, 'search_slf'])->name('search_slf')->middleware('auth');
+Route::get('/slf/{id}', [App\Http\Controllers\SlfController::class, 'show'])->name('slf_id')->middleware('auth');
 
 
 
 //// Halaman Pertelaan
 Route::get('/pertelaan', [App\Http\Controllers\PertelaanController::class, 'index'])->name('pertelaan_index')->middleware('auth');
 Route::get('/pertelaan/search_data', [App\Http\Controllers\PertelaanController::class, 'search_pertelaan'])->name('search_pertelaan')->middleware('auth');
+Route::get('/pertelaan/{id}', [App\Http\Controllers\PertelaanController::class, 'show'])->name('pertelaan_id')->middleware('auth');
+
 
 
 
@@ -69,6 +73,9 @@ Route::get('/penertiban/search_data', [App\Http\Controllers\PenertibanController
 Route::get('/penertiban/tambah_data', [App\Http\Controllers\PenertibanController::class, 'tambah_penertiban'])->name('tambah_penertiban')->middleware('auth');
 
 Route::post('/penertiban/store', [App\Http\Controllers\PenertibanController::class, 'store_penertiban'])->name('store_penertiban')->middleware('auth');
+
+Route::get('/penertiban/{id}', [App\Http\Controllers\PenertibanController::class, 'show'])->name('penertiban_id')->middleware('auth');
+
 
 
 
@@ -82,6 +89,9 @@ Route::get('/pengaduan/tambah_data', [App\Http\Controllers\PengaduanController::
 
 Route::post('/pengaduan/store', [App\Http\Controllers\PengaduanController::class, 'store_pengaduan'])->name('store_pengaduan')->middleware('auth');
 
+Route::get('/pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 'show'])->name('pengaduan_id')->middleware('auth');
+
+
 
 
 
@@ -89,4 +99,5 @@ Route::post('/pengaduan/store', [App\Http\Controllers\PengaduanController::class
 
 Route::get('/tabg', [App\Http\Controllers\TabgController::class, 'index'])->name('tabg_index')->middleware('auth');
 Route::get('/tabg/search_data', [App\Http\Controllers\TabgController::class, 'search_tabg'])->name('search_tabg')->middleware('auth');
+Route::get('/tabg/{id}', [App\Http\Controllers\TabgController::class, 'show'])->name('tabg_id')->middleware('auth');
 

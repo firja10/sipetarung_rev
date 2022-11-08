@@ -254,7 +254,7 @@ Data Pertelaan
                             <td>{{$pertelaans->nama_bangunan}}</td>
                             <td>{{$pertelaans->nama_pemohon_pertelaan}}</td>
                            
-                            <td><button class = "btn btn-secondary mr-2">View</button> <button class="btn btn-primary">Update</button></td>
+                            <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('pertelaan_id',$pertelaans->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditPertelaan">Update</button> </center></td>
                         </tr>
 
                     @endforeach

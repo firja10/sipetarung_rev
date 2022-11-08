@@ -41,9 +41,9 @@ class SkrkController extends Controller
         $kolom3 = $request->get('kolom3');
         $nilai3 = $request->get('nilai3');
 
-        $data_search = DB::table('imb')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
+        $skrk_imb = DB::table('imb')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
 
-        return view('skrk-imb.index_search', compact('data_search'));
+        return view('skrk-imb.index', compact('skrk_imb'));
 
     }
 
@@ -78,10 +78,30 @@ class SkrkController extends Controller
      * @param  \App\Models\Skrk  $skrk
      * @return \Illuminate\Http\Response
      */
-    public function show(Skrk $skrk)
+    // public function show(Skrk $skrk)
+    // {
+    //     //
+    // }
+
+
+
+    public function show($id)
     {
         //
+
+
+
+        $skrk_imb = Skrk::findOrFail($id);
+
+        return view('skrk-imb.show', compact('skrk_imb'));
+
+
+
+
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -43,9 +43,9 @@ class TabgController extends Controller
         $kolom3 = $request->get('kolom3');
         $nilai3 = $request->get('nilai3');
 
-        $data_search = DB::table('tabg')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
+        $tabg = DB::table('tabg')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
 
-        return view('tabg.index_search', compact('data_search'));
+        return view('tabg.index', compact('tabg'));
 
 
     }
@@ -80,10 +80,27 @@ class TabgController extends Controller
      * @param  \App\Models\Tabg  $tabg
      * @return \Illuminate\Http\Response
      */
-    public function show(Tabg $tabg)
+    // public function show(Tabg $tabg)
+    // {
+    //     //
+    // }
+
+
+
+
+    public function show($id)
     {
         //
+
+        $tabg = DB::table('tabg')->where('gid', $id)->first();
+
+        return view('tabg.show', compact('tabg'));
+
+
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.

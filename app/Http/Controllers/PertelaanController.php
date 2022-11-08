@@ -78,10 +78,25 @@ class PertelaanController extends Controller
      * @param  \App\Models\Pertelaan  $pertelaan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pertelaan $pertelaan)
+    // public function show(Pertelaan $pertelaan)
+    // {
+    //     //
+    // }
+
+
+    public function show($id)
     {
         //
+
+        $pertelaan = Pertelaan::findOrFail($id);
+
+        return view('pertelaan.show', compact('pertelaan'));
+
+
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.

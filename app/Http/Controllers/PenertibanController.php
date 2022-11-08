@@ -46,9 +46,9 @@ class PenertibanController extends Controller
         $kolom3 = $request->get('kolom3');
         $nilai3 = $request->get('nilai3');
 
-        $data_search = DB::table('penertiban')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
+        $penertiban = DB::table('penertiban')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
 
-        return view('penertiban.index_search', compact('data_search'));
+        return view('penertiban.index', compact('penertiban'));
 
 
     }
@@ -221,10 +221,30 @@ class PenertibanController extends Controller
      * @param  \App\Models\Penertiban  $penertiban
      * @return \Illuminate\Http\Response
      */
-    public function show(Penertiban $penertiban)
+    // public function show(Penertiban $penertiban)
+    // {
+    //     //
+    // }
+
+
+
+
+    public function show($id)
     {
         //
+
+        $penertiban = Penertiban::findOrFail($id);
+
+        return view('penertiban.show', compact('penertiban'));
+
+
+
     }
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.

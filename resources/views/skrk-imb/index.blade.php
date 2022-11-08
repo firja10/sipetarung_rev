@@ -260,7 +260,7 @@ Data SKRK - IMB
                             <td>{{$skrk_imbs->nama_jalan}}</td>
                             <td>{{$skrk_imbs->nama_pemohon_imb}}</td>
                             <td>{{$skrk_imbs->alamat_pemohon_imb}}</td>
-                            <td><button class = "btn btn-secondary mr-2">View</button> <button class="btn btn-primary">Update</button></td>
+                            <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('skrk_imb_id',$skrk_imbs->id_imb )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditSkrkIMB">Update</button> </center></td>
                         </tr>
 
                     @endforeach

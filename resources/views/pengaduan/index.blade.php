@@ -206,9 +206,9 @@ Data Pengaduan
                     <div class = "form-group" id = "total_keseluruhan">
 
 
-                    <h3> <strong>Total Data Yang Ditampilkan : </strong> </h3> 
+                    <h3> <strong>Total Data Yang Ditampilkan : </strong><span id = "total_sekarang"> </span></h3> 
 
-                      <h4 id = "total_sekarang"> </h4>
+           
                       <h4 id = "total_sekarang_2"></h4>
 
                       {{-- <br>
@@ -261,7 +261,7 @@ Data Pengaduan
                         <td>{{$pengaduans->kelurahan}}</td>
                         <td>{{$pengaduans->kecamatan}}</td>
                        
-                        <td><button class = "btn btn-secondary mr-2">View</button> <button class="btn btn-primary">Update</button></td>
+                        <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('pengaduan_id',$pengaduans->id )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditPengaduan">Update</button> </center></td>
                     </tr>
 
                 @endforeach

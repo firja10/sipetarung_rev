@@ -43,9 +43,9 @@ class PengaduanController extends Controller
         $kolom3 = $request->get('kolom3');
         $nilai3 = $request->get('nilai3');
 
-        $data_search = DB::table('pengaduan')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
+        $pengaduan = DB::table('pengaduan')->where($kolom1, 'LIKE', '%' . $nilai1 . '%')->where($kolom2, 'LIKE', '%' . $nilai2 . '%')->where($kolom3, 'LIKE', '%' . $nilai3 . '%')->get();
 
-        return view('pengaduan.index_search', compact('data_search'));
+        return view('pengaduan.index', compact('pengaduan'));
 
 
     }
@@ -188,10 +188,26 @@ class PengaduanController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengaduan $pengaduan)
+    // public function show(Pengaduan $pengaduan)
+    // {
+    //     //
+    // }
+
+
+
+
+    public function show($id)
     {
         //
+
+        $pengaduan = DB::table('pengaduan')->where('id', $id)->first();
+
+        return view('pengaduan.show', compact('pengaduan'));
+
+
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -120,7 +120,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <a href="{{asset('/')}}" type="button" class="btn btn-default">Kembali</a>
+              <a href="{{url('/menara')}}" type="button" class="btn btn-default">Kembali</a>
             </div>
           </div>
           <!-- /.card -->

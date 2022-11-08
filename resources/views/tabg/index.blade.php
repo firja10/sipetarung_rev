@@ -240,7 +240,7 @@ Data TABG
                         <td>{{$tabgs->alamat_persil}}</td>
                         <td>{{$tabgs->penggunaan_bangunan}}</td>
                         <td>{{$tabgs->no_telp_pemohon}}</td>
-                        <td><button class = "btn btn-secondary mr-2">View</button> <button class="btn btn-primary">Update</button></td>
+                        <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('tabg_id',$tabgs->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditTabg">Update</button> </center></td>
                     </tr>
 
                 @endforeach
