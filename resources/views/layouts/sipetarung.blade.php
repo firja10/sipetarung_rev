@@ -82,7 +82,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar elevation-4">
     <!-- Brand Logo -->
-    <a href="{{asset("/level1")}}" class="brand-link">
+    <a href="{{url("/")}}" class="brand-link">
       <img src="{{asset("dist/img/DPRKPP-02.png")}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light text-primary">DPRKPP</span>
     </a>
