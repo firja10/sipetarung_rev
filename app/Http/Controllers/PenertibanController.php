@@ -264,10 +264,80 @@ class PenertibanController extends Controller
      * @param  \App\Models\Penertiban  $penertiban
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Penertiban $penertiban)
+    // public function update(Request $request, Penertiban $penertiban)
+    // {
+    //     //
+    // }
+
+
+
+    public function update(Request $request, $id)
     {
         //
+
+
+
+        if ($request->hasFile('foto_dokumen')) {
+            if (Storage::exists('public/foto_dokumen/'.$request->emp_foto_dokumen)) {
+                Storage::delete('public/foto_dokumen/'.$request->emp_foto_dokumen);
+            }
+            $image = $request->file('foto_dokumen');
+            $fileName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->storeAs('public/foto_dokumen', $fileName);
+        }else {
+            $fileName = $request->emp_foto_dokumen;
+        }
+        if ($request->hasFile('foto_lapangan')) {
+            if (Storage::exists('public/foto_lapangan/'.$request->emp_foto_lapangan)) {
+                Storage::delete('public/foto_lapangan/'.$request->emp_foto_lapangan);
+            }
+            $image2 = $request->file('foto_lapangan');
+            $fileName2 = date('YmdHis') . "." . $image2->getClientOriginalExtension();
+            $image2->storeAs('public/foto_lapangan', $fileName2);
+        }else {
+            $fileName2 = $request->emp_foto_lapangan;
+        }
+
+
+
+        Penertiban::where('id', $id)->update([
+
+            'no_upt_imb' => $request->no_upt_imb,
+            'sk_peringatan1' => $request->sk_peringatan1,
+            'tgl_sk_peringatan1' => $request->tgl_sk_peringatan1,
+            'sk_peringatan2' => $request->sk_peringatan2,
+            'tgl_sk_peringatan2' => $request->tgl_sk_peringatan2,
+            'sk_peringatan3' => $request->sk_peringatan3,
+            'tgl_sk_peringatan3' => $request->tgl_sk_peringatan3,
+            'sk_penyegelan' => $request->sk_penyegelan,
+            'tgl_sk_penyegelan' => $request->tgl_sk_penyegelan,
+            'sk_bantib_penyegelan' => $request->sk_bantib_penyegelan,
+            'tgl_sk_bantib_penyegelan' => $request->tgl_sk_bantib_penyegelan,
+            'sk_pembongkaran' => $request->sk_pembongkaran,
+            'tgl_sk_pembongkaran' => $request->tgl_sk_pembongkaran,
+            'sk_pembongkaran' => $request->sk_pembongkaran,
+            'tgl_sk_bantib_pembongkaran' => $request->tgl_sk_bantib_pembongkaran,
+            'alamat' => $request->alamat,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'jenis' => $request->jenis,
+            'tahapan' => $request->tahapan,
+            'keterangan' => $request->keterangan,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'foto_dokumen' => $request->$fileName,
+            'foto_lapangan' => $request->$fileName2,
+
+        ]);
+
+
+        return redirect('/penertiban')->with('success_update_penertiban', 'Penertiban Sukses diupdate');
+
+
+
     }
+
+
 
     /**
      * Remove the specified resource from storage.

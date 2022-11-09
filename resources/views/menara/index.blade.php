@@ -259,10 +259,122 @@ Data Menara Sipetarung
                         <td>{{$towers->tinggi_tower}}</td>
                         <td>{{$towers->alamat_tower}}</td>
                         <td>{{$towers->sk_skrk}}</td>
-                        <td> <center> <br><a class = "btn btn-secondary mb-2" href = "{{route('menara_id',$towers->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditMenara">Update</button> </center></td>
+                        <td> <center> <br><a class = "btn btn-secondary mb-2" href = "{{route('menara_id',$towers->gid )}}">View</a> <br> <button class="btn btn-primary edit_modal" data-toggle="modal" data-target="#EditMenara{{$towers->gid}}">Update</button> </center></td>
 
                     </tr>
-                        
+
+                    
+
+
+                    <div class="modal fade" id="EditMenara{{$towers->gid}}">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Data Menara</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            {{-- <section class="content"> --}}
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="card card-primary">
+                                    <div class="card-body" id="edit-modal">
+              
+
+                                          <form action="{{route('update_menara_id', $towers->gid)}}" id="input-menara" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PATCH')
+
+                                            <input type="hidden" name="emp_scan_imb" id="emp_scan_imb">
+                                            <input type="hidden" name="emp_scan_gambar_imb" id="emp_scan_gambar_imb">
+                                            <input type="hidden" name="emp_scan_zoning" id="emp_scan_zoning">
+                                            <input type="hidden" name="gid" id="gid" class="form-control" value="{{$towers->gid}}">
+                                            <div class="form-group">
+                                                <label for="inputClientCompany">Provider</label>
+                                                <input type="text" name="provider" id="provider" class="form-control" value="{{$towers->provider}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Tipe Tower</label>
+                                                <input type="text" name="tipe_tower" id="tipe_tower" class="form-control" value="{{$towers->tipe_tower}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Tinggi Tower</label>
+                                                <input type="number" name="tinggi_tower" id="tinggi_tower" class="form-control" value="{{$towers->tinggi_tower}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">SK IMB</label>
+                                                <input type="text" name="sk_imb" id="sk_imb" class="form-control" value="{{$towers->sk_imb}}">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="inputDescription">Alamat Pemohon</label>
+                                              <textarea name="alamat_pemohon" id="alamat_pemohon" class="form-control" rows="4">{{$towers->alamat_pemohon}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="inputDescription">Alamat Tower</label>
+                                              <textarea name="alamat_tower" id="alamat_tower" class="form-control" rows="4">{{$towers->alamat_tower}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputClientCompany">Kelurahan</label>
+                                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" value="{{$towers->kelurahan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Kecamatan</label>
+                                                <input type="text" name="kecamatan" id="kecamatan" class="form-control" value="{{$towers->kecamatan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Scan IMB</label>
+                                                <input type="file" name="scan_imb" id="scan_imb" class="form-control" value="{{$towers->scan_imb}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Scan Gambar IMB</label>
+                                                <input type="file" name="scan_gambar_imb" id="scan_gambar_imb" class="form-control" value="{{$towers->scan_gambar_imb}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Scan Zoning</label>
+                                                <input type="file" name="scan_zoning" id="scan_zoning" class="form-control" value="{{$towers->scan_zoning}}">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="inputStatus">Jenis Data</label>
+                                              <select id="jenis_data" name="jenis_data" class="form-control custom-select">
+                                                <option value="{{$towers->jenis_data}}" selected>{{$towers->jenis_data}}</option>
+                                                <option value="REKONSILIASI">REKONSILIASI</option>
+                                                <option value="NON REKONSILIASI">NON REKONSILIASI</option>
+                                              </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                              <button type="button" class="btn btn-default ml-3" data-dismiss="modal">Close</button>
+                                              <button type="submit" class="btn btn-success float-right mb-3 mr-3 toastrDefaultSuccess">Save changes</button>
+                                            </div>
+
+                                          </form>
+
+
+
+                                    </div>
+                                    <!-- /.card-body -->
+                                  </div>
+                                  <!-- /.card -->
+                                </div>
+                              </div>
+                            {{-- </section> --}}
+                          </div>
+                          <div class="modal-footer-edit justify-content-between">
+                            
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+
+
+
+
+
+
                     @endforeach
 
                   </tbody>
@@ -328,38 +440,22 @@ Data Menara Sipetarung
       </div>
     </div>
     
-    <div class="modal fade" id="modal-lg">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Edit Data Menara</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            {{-- <section class="content"> --}}
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card card-primary">
-                    <div class="card-body" id="edit-modal">
-                      
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </div>
-              </div>
-            {{-- </section> --}}
-          </div>
-          <div class="modal-footer-edit justify-content-between">
-            
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
     
     <div class="modal fade" id="modal-sm">
       <div class="modal-dialog modal-sm">
@@ -413,6 +509,29 @@ Data Menara Sipetarung
 
 
 
+
+
+
+
+// $('.edit_modal').on('click', function (event) {
+//     event.preventDefault();
+//     // tangkap id modal yang ingin dimunculkan
+//     var id = $(this).attr('data-target');
+    
+//     // munculkan modal berdasarkan id
+//     $('#EditMenara'+id).modal();
+// });
+
+
+
+
+
+
+
+
+
+
+
 $(function () {
     $('.select2').select2()
   });
@@ -428,6 +547,24 @@ $(function () {
 		// }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 		table()
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

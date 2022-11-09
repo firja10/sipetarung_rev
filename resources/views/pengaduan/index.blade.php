@@ -264,6 +264,80 @@ Data Pengaduan
                         <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('pengaduan_id',$pengaduans->id )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditPengaduan">Update</button> </center></td>
                     </tr>
 
+
+
+                    <form action="{{route('store_pengaduan')}}" id="input-pengaduan" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="id" id="id" class="form-control" value="`+res.id+`">
+                      <input type="hidden" name="emp_file_lapangan" id="emp_file_lapangan">
+                      <input type="hidden" name="emp_file_dokumen" id="emp_file_dokumen">
+                      <div class="form-group">
+                          <label for="inputClientCompany">No SKRK</label>
+                          <input type="text" name="no_skrk" id="no_skrk" value="`+res.no_skrk+`" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputClientCompany">No IMB</label>
+                          <input type="text" name="no_imb" id="no_imb" value="`+res.no_imb+`" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputClientCompany">Nama Pengadu</label>
+                        <input type="text" name="nama_pengadu" id="nama_pengadu" value="`+res.nama_pengadu+`" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputDescription">Alamat Pengadu</label>
+                        <textarea name="alamat_pengadu" id="alamat_pengadu" class="form-control" rows="4">`+res.alamat_pengadu+`</textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputClientCompany">Nama Teradu</label>
+                        <input type="text" name="nama_teradu" id="nama_teradu" value="`+res.nama_teradu+`" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputDescription">Alamat Teradu</label>
+                        <textarea name="alamat_teradu" id="alamat_teradu" class="form-control" rows="4">`+res.alamat_teradu+`</textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputClientCompany">Kelurahan</label>
+                          <input type="text" name="kelurahan" id="kelurahan" class="form-control" value="`+res.kelurahan+`">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputProjectLeader">Kecamatan</label>
+                          <input type="text" name="kecamatan" id="kecamatan" class="form-control" value="`+res.kecamatan+`">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputClientCompany">Latitude</label>
+                          <input type="text" name="latitude" id="latitude" value="`+res.latitude+`" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputClientCompany">Longitude</label>
+                          <input type="text" name="longitude" id="longitude" value="`+res.longitude+`" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputDescription">Keterangan</label>
+                        <textarea name="keterangan" id="keterangan" class="form-control" rows="4">`+res.keterangan+`</textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputStatus">Status Pengaduan</label>
+                        <select id="status_pengaduan" name="status_pengaduan" class="form-control custom-select">
+                          <option value="`+res.status_pengaduan+`" selected>`+res.status_pengaduan+`</option>
+                          <option value="Proses">Proses</option>
+                          <option value="Selesai">Selesai</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputProjectLeader">File Dokumen</label>
+                          <input type="file" name="file_dokumen" id="file_dokumen" class="form-control" value="`+res.file_dokumen+`">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputProjectLeader">Foto Lapangan</label>
+                          <input type="file" name="file_lapangan" id="file_lapangan" class="form-control" value="`+res.file_lapangan+`">
+                      </div>
+
+                      <div class="form-group">
+                        <button type="button" class="btn btn-default ml-3" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success float-right mb-3 mr-3 toastrDefaultSuccess">Save changes</button>
+                      </div>
+
+                    </form>
+
                 @endforeach
 
 

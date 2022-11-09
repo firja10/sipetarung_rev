@@ -3,6 +3,16 @@
 @extends('layouts.sipetarung_penertiban')
 
 
+@section('title')
+
+Membuat Data Pengaduan
+    
+@endsection
+
+
+
+
+
 @section('content')
     
 

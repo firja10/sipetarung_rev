@@ -7,6 +7,7 @@ use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use Yajra\DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class TowerController extends Controller
 {
@@ -183,10 +184,87 @@ class TowerController extends Controller
      * @param  \App\Models\Tower  $tower
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tower $tower)
+    // public function update(Request $request, Tower $tower)
+    // {
+    //     //
+    // }
+
+
+
+    public function update(Request $request, $id)
     {
         //
+
+
+        if ($request->hasFile('scan_imb')) {
+            if (Storage::exists('public/scan_imb/'.$request->emp_scan_imb)) {
+                // dd('exist');
+                Storage::delete('public/scan_imb/'.$request->emp_scan_imb);
+            }
+            $image = $request->file('scan_imb');
+            // $destinationPath = 'public/scan_imb/';
+            $fileName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            // $image->move($destinationPath, $profileImage);
+            $image->storeAs('public/scan_imb', $fileName);
+            // dd($image);
+            // $filename = "$profileImage";
+        }else {
+            $fileName = $request->emp_scan_imb;
+        }
+
+        if ($request->hasFile('scan_gambar_imb')) {
+            if (Storage::exists('public/scan_gambar_imb/'.$request->emp_scan_gambar_imb)) {
+                Storage::delete('public/scan_gambar_imb/'.$request->emp_scan_gambar_imb);
+            }
+            $image1 = $request->file('scan_gambar_imb');
+            $fileName1 = date('YmdHis') . "." . $image1->getClientOriginalExtension();
+            $image1->storeAs('public/scan_gambar_imb', $fileName1);
+        }else {
+            $fileName1 = $request->emp_scan_gambar_imb;
+        }
+
+        if ($request->hasFile('scan_zoning')) {
+            if (Storage::exists('public/scan_zoning/'.$request->emp_scan_zoning)) {
+                // dd('exist');
+                Storage::delete('public/scan_zoning/'.$request->emp_scan_zoning);
+            }
+            $image2 = $request->file('scan_zoning');
+            // $destinationPath = 'public/scan_imb/';
+            $fileName2 = date('YmdHis') . "." . $image2->getClientOriginalExtension();
+            // $image->move($destinationPath, $profileImage);
+            $image2->storeAs('public/scan_zoning', $fileName2);
+        }else {
+            $fileName2 = $request->emp_scan_zoning;
+        }
+
+
+        Tower::where('gid', $id)->update([
+
+            'gid' => $request->gid,
+            'provider' => $request->provider,
+            'tipe_tower' => $request->tipe_tower,
+            'tinggi_tower' => $request->tinggi_tower,
+            'sk_imb' => $request->sk_imb,
+            'alamat_pemohon' => $request->alamat_pemohon,
+            'alamat_tower' => $request->alamat_tower,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'scan_imb' => $fileName,
+            'scan_gambar_imb' => $fileName1,
+            'scan_zoning' => $fileName2,
+            'jenis_data' => $request->jenis_data,
+
+
+        ]);
+
+
+        return redirect('/menara')->with('success_update', 'Data Telah Terupdate');
+
+
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

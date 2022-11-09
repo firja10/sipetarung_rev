@@ -38,6 +38,9 @@ Route::get('/menara', [App\Http\Controllers\TowerController::class, 'index'])->n
 Route::get('/menara/search_data', [App\Http\Controllers\TowerController::class, 'search_tower'])->name('search_tower')->middleware('auth');
 Route::get('/menara/{id}', [App\Http\Controllers\TowerController::class, 'show'])->name('menara_id')->middleware('auth');
 
+Route::patch('/menara/{id}', [App\Http\Controllers\TowerController::class, 'update'])->name('update_menara_id')->middleware('auth');
+
+
 
 
 
@@ -75,6 +78,8 @@ Route::get('/penertiban/tambah_data', [App\Http\Controllers\PenertibanController
 Route::post('/penertiban/store', [App\Http\Controllers\PenertibanController::class, 'store_penertiban'])->name('store_penertiban')->middleware('auth');
 
 Route::get('/penertiban/{id}', [App\Http\Controllers\PenertibanController::class, 'show'])->name('penertiban_id')->middleware('auth');
+
+Route::patch('/penertiban/{id}', [App\Http\Controllers\PenertibanController::class, 'update'])->name('update_penertiban_id')->middleware('auth');
 
 
 
