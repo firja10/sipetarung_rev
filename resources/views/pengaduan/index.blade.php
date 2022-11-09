@@ -402,7 +402,7 @@ Data Pengaduan
       </div>
       <div class="modal-footer-create justify-content-between">
         <button type="button" class="btn btn-default ml-3" data-dismiss="modal">Close</button>
-        <button type="button" type="submit" class="btn btn-success float-right mb-3 mr-3">Save changes</button>
+        <button type="submit" class="btn btn-success float-right mb-3 mr-3">Save changes</button>
       
       </div>
     </div>

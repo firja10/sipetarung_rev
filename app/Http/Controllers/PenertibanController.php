@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-use Apps\Helpers\Helper;
+use App\Helpers\Helper;
 
 class PenertibanController extends Controller
 {

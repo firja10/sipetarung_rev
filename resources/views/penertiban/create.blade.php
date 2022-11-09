@@ -1,3 +1,5 @@
+{{-- @extends('layouts.sipetarung_penertiban') --}}
+
 @extends('layouts.sipetarung_penertiban')
 
 
@@ -22,6 +24,7 @@
             <div class="card-body" id="create">
 
               <form action="{{route('store_penertiban')}}" id="input-penertiban" method="POST" enctype="multipart/form-data">
+                {{-- <form action="{{route('store_penertiban')}}"method="POST" enctype="multipart/form-data"> --}}
                 @csrf
                 <div class="form-group">
                   <label for="inputDescription">No UPT IMB</label>
@@ -155,7 +158,7 @@
                     <option value="Bangunan Tidak ber IMB (Persil)">Bangunan Tidak ber IMB (Persil)</option>
                     <option value="Bangunan Tidak Sesuai dengan IMB (Persil)">Bangunan Tidak Sesuai dengan IMB (Persil)</option>
                     <option value="Bangunan ber IMB (Sewa Tanah Habis Masa Berlaku)">Bangunan ber IMB (Sewa Tanah Habis Masa Berlaku)</option>
-                    <option value="Lainya"">Lainya</option>
+                    <option value="Lainya">Lainya</option>
                   </select>
                 </div>
                 <div class="form-group" id="tahapan1">
@@ -273,9 +276,10 @@
         
                 <div class="form-group">
                   <a type="button" href="{{asset("/")}}" class="btn btn-default ml-3">Back</a>
-                <button type="button" type = "submit" class="btn btn-success float-right mb-3 mr-3 toastrDefaultSuccess">Save changes</button>
-                </form>
+                <button type = "submit" class="btn btn-success float-right mb-3 mr-3 toastrDefaultSuccess">Save changes</button>
                 </div>
+
+              </form>
                 
             </div>
             <!-- /.card-body -->

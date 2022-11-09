@@ -313,27 +313,27 @@ crossorigin=""></script>
     create_data()
 		table()
     //Date picker
-    $('#tgl_sk_peringatan1_create').datetimepicker({
-        format: 'L'
-    });
-    $('#tgl_sk_peringatan2_create').datetimepicker({
-        format: 'L'
-    });
-    $('#tgl_sk_peringatan3_create').datetimepicker({
-        format: 'L'
-    });
-    $('#tgl_sk_penyegelan_create').datetimepicker({
-        format: 'L'
-    });
-    $('#tgl_sk_bantib_penyegelan_create').datetimepicker({
-        format: 'L'
-    });
-    $('#tgl_sk_pembongkaran_create').datetimepicker({
-        format: 'L'
-    });
-    $('#tgl_sk_bantib_pembongkaran_create').datetimepicker({
-        format: 'L'
-    });
+    // $('#tgl_sk_peringatan1_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_peringatan2_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_peringatan3_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_penyegelan_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_bantib_penyegelan_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_pembongkaran_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_bantib_pembongkaran_create').datetimepicker({
+    //     format: 'L'
+    // });
 	});
   function table() {
     $('#example2').DataTable({
@@ -346,7 +346,7 @@ crossorigin=""></script>
 		"autoWidth": false,
 		"responsive": true,
     "processing": true,
-    "serverSide": false,
+    "serverSide": true,
 		
 		});
   }
