@@ -266,8 +266,6 @@ class PengaduanController extends Controller
 
 
         Pengaduan::where('id', $id)->update([
-
-
             'nama_pengadu' => $request->nama_pengadu,
             'alamat_pengadu' => $request->alamat_pengadu,
             'nama_teradu' => $request->nama_teradu,

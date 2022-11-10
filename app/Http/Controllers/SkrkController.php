@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Skrk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 
 
 class SkrkController extends Controller
@@ -121,10 +121,103 @@ class SkrkController extends Controller
      * @param  \App\Models\Skrk  $skrk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Skrk $skrk)
+    // public function update(Request $request, Skrk $skrk)
+    // {
+    //     //
+    // }
+
+
+    public function update(Request $request, $id)
     {
         //
+
+
+        if ($request->hasFile('scan_skrk')) {
+            if (Storage::exists('public/scan_skrk/'.$request->emp_scan_skrk)) {
+                // dd('exist');
+                Storage::delete('public/scan_skrk/'.$request->emp_scan_skrk);
+            }
+            $image = $request->file('scan_skrk');
+            // $destinationPath = 'public/scan_imb/';
+            $fileName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            // $image->move($destinationPath, $profileImage);
+            $image->storeAs('public/scan_skrk', $fileName);
+            // dd($image);
+            // $filename = "$profileImage";
+        }else {
+            $fileName = $request->emp_scan_skrk;
+        }
+        if ($request->hasFile('scan_imb')) {
+            if (Storage::exists('public/scan_imb/'.$request->emp_scan_imb)) {
+                Storage::delete('public/scan_imb/'.$request->emp_scan_imb);
+            }
+            $image1 = $request->file('scan_imb');
+            $fileName1 = date('YmdHis') . "." . $image1->getClientOriginalExtension();
+            $image1->storeAs('public/scan_imb', $fileName1);
+        }else {
+            $fileName1 = $request->emp_scan_imb;
+        }
+        if ($request->hasFile('scan_zoning')) {
+            if (Storage::exists('public/scan_zoning/'.$request->emp_scan_zoning)) {
+                Storage::delete('public/scan_zoning/'.$request->emp_scan_zoning);
+            }
+            $image2 = $request->file('scan_zoning');
+            $fileName2 = date('YmdHis') . "." . $image2->getClientOriginalExtension();
+            $image2->storeAs('public/scan_zoning', $fileName2);
+        }else {
+            $fileName2 = $request->emp_scan_zoning;
+        }
+        if ($request->hasFile('scan_gambar')) {
+            if (Storage::exists('public/scan_gambar_imb/'.$request->emp_scan_gambar)) {
+                Storage::delete('public/scan_gambar_imb/'.$request->emp_scan_gambar);
+            }
+            $image3 = $request->file('scan_gambar');
+            $fileName3 = date('YmdHis') . "." . $image3->getClientOriginalExtension();
+            $image3->storeAs('public/scan_gambar_imb', $fileName3);
+        }else {
+            $fileName3 = $request->emp_scan_gambar;
+        }
+
+
+
+        Skrk::where('gid', $id)->update([
+            'id_imb' => $request->id_imb,
+            'no_upt' => $request->no_upt,
+            'no_skrk' => $request->no_skrk,
+            'tgl_skrk' => $request->tgl_skrk,
+            'pemohon' => $request->pemohon,
+            'alamat_persil' => $request->alamat_persil,
+            'permohonan' => $request->permohonan,
+            'peruntukan' => $request->peruntukan,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan' => $request->kecamatan,
+            'no_upt_imb' => $request->no_upt_imb,
+            'no_imb' => $request->no_imb,
+            'tgl_imb' => $request->tgl_imb,
+            'atas_nama' => $request->atas_nama,
+            'nama_pemoh' => $request->nama_pemoh,
+            'persil_imb' => $request->persil_imb,
+            'penggunaan' => $request->penggunaan,
+            'luas_bangunan' => $request->luas_bangunan,
+            'tinggi_bangunan' => $request->tinggi_bangunan,
+            'jumlah_lantai' => $request->jumlah_lantai,
+            'scan_skrk' => $fileName,
+            'scan_imb' => $fileName1,
+            'scan_zoning' => $fileName2,
+            'scan_gambar' => $fileName3,
+
+        
+
+        ]);
+
+
+        return redirect('/skrk-imb')->with('success_update_skrk_imb', 'Sukses Update SKRK IMB');
+
+
+
     }
+
+
 
     /**
      * Remove the specified resource from storage.

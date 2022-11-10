@@ -50,7 +50,7 @@ Route::patch('/menara/{id}', [App\Http\Controllers\TowerController::class, 'upda
 Route::get('/skrk-imb', [App\Http\Controllers\SkrkController::class, 'index'])->name('skrk_index')->middleware('auth');
 Route::get('/skrk-imb/search_data', [App\Http\Controllers\SkrkController::class, 'search_imb'])->name('search_imb')->middleware('auth');
 Route::get('/skrk-imb/{id}', [App\Http\Controllers\SkrkController::class, 'show'])->name('skrk_imb_id')->middleware('auth');
-
+Route::patch('/skrk-imb/{id}', [App\Http\Controllers\SkrkController::class, 'update'])->name('update_skrk_imb_id')->middleware('auth');
 
 
 
@@ -58,6 +58,7 @@ Route::get('/skrk-imb/{id}', [App\Http\Controllers\SkrkController::class, 'show'
 Route::get('/slf', [App\Http\Controllers\SlfController::class, 'index'])->name('slf_index')->middleware('auth');
 Route::get('/slf/search_data', [App\Http\Controllers\SlfController::class, 'search_slf'])->name('search_slf')->middleware('auth');
 Route::get('/slf/{id}', [App\Http\Controllers\SlfController::class, 'show'])->name('slf_id')->middleware('auth');
+Route::patch('/slf/{id}', [App\Http\Controllers\SlfController::class, 'update'])->name('update_slf_id')->middleware('auth');
 
 
 
@@ -65,6 +66,8 @@ Route::get('/slf/{id}', [App\Http\Controllers\SlfController::class, 'show'])->na
 Route::get('/pertelaan', [App\Http\Controllers\PertelaanController::class, 'index'])->name('pertelaan_index')->middleware('auth');
 Route::get('/pertelaan/search_data', [App\Http\Controllers\PertelaanController::class, 'search_pertelaan'])->name('search_pertelaan')->middleware('auth');
 Route::get('/pertelaan/{id}', [App\Http\Controllers\PertelaanController::class, 'show'])->name('pertelaan_id')->middleware('auth');
+Route::patch('/pertelaan/{id}', [App\Http\Controllers\PertelaanController::class, 'update'])->name('update_pertelaan_id')->middleware('auth');
+
 
 
 
@@ -96,6 +99,8 @@ Route::post('/pengaduan/store', [App\Http\Controllers\PengaduanController::class
 
 Route::get('/pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 'show'])->name('pengaduan_id')->middleware('auth');
 
+Route::patch('/pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 'update'])->name('update_pengaduan_id')->middleware('auth');
+
 
 
 
@@ -105,4 +110,6 @@ Route::get('/pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 
 Route::get('/tabg', [App\Http\Controllers\TabgController::class, 'index'])->name('tabg_index')->middleware('auth');
 Route::get('/tabg/search_data', [App\Http\Controllers\TabgController::class, 'search_tabg'])->name('search_tabg')->middleware('auth');
 Route::get('/tabg/{id}', [App\Http\Controllers\TabgController::class, 'show'])->name('tabg_id')->middleware('auth');
+Route::patch('/tabg/{id}', [App\Http\Controllers\TabgController::class, 'update'])->name('update_tabg_id')->middleware('auth');
+
 

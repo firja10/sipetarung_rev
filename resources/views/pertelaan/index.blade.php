@@ -254,8 +254,197 @@ Data Pertelaan
                             <td>{{$pertelaans->nama_bangunan}}</td>
                             <td>{{$pertelaans->nama_pemohon_pertelaan}}</td>
                            
-                            <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('pertelaan_id',$pertelaans->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditPertelaan">Update</button> </center></td>
+                            <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('pertelaan_id',$pertelaans->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditPertelaan{{$pertelaans->gid}}">Update</button> </center></td>
                         </tr>
+
+
+
+
+                        <form action="{{route("update_pertelaan_id", $pertelaans->gid)}}" id="input-pertelaan" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          @method('PATCH')
+
+
+                        <div class="modal fade" id="EditPertelaan{{$pertelaans->gid}}">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Edit Data Pertelaan</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                {{-- <section class="content"> --}}
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="card card-primary">
+                                        <div class="card-body" id="edit-modal">
+
+
+                
+
+                          <div id="edit-modal1">
+
+
+                            <input type="hidden" name="gid" id="gid" class="form-control" value="{{$pertelaans->gid}}">
+                            <input type="hidden" name="emp_file_sk_pertelaan" id="emp_file_sk_pertelaan">
+                            <input type="hidden" name="emp_file_perstek" id="emp_file_perstek">
+                            <input type="hidden" name="emp_file_gambar_pertelaan" id="emp_file_gambar_pertelaan">
+                            <input type="hidden" name="emp_file_gambar_as_build" id="emp_file_gambar_as_build">
+                            <div class="form-group">
+                                <label for="inputClientCompany">No SK Pertelaan</label>
+                                <input type="text" name="no_sk_pertelaan" id="no_sk_pertelaan" value="{{$pertelaans->no_sk_pertelaan}}" class="form-control">
+                            </div>
+
+
+      
+                          </div>
+                          <div class="form-group">
+                            <label>Tanggal Pertelaan</label>
+                            <div class="input-group date" id="tgl_pertelaan" data-target-input="nearest">
+                                <input type="text" name="tgl_pertelaan" id="input_tgl_pertelaan" class="form-control datetimepicker-input" data-target="#tgl_pertelaan"/>
+                                <div class="input-group-append" data-target="#tgl_pertelaan" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div id="edit-modal2">
+
+
+
+                            <div class="form-group">
+                              <label for="inputClientCompany">Jenis Pertelaan</label>
+                              <input type="text" name="jenis_pertelaan" id="jenis_pertelaan" value="{{$pertelaans->jenis_pertelaan}}" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputClientCompany">Nama Bangunan</label>
+                            <input type="text" name="nama_bangunan" id="nama_bangunan" value="{{$pertelaans->nama_bangunan}}" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <label for="inputClientCompany">No Persetujuan Teknis</label>
+                            <input type="text" name="no_persetujuan_teknis" id="no_persetujuan_teknis" value="{{$pertelaans->no_persetujuan_teknis}}" class="form-control">
+                          </div>
+
+
+
+                            
+                          </div>
+                          <div class="form-group">
+                            <label>Tanggal Persetujuan Teknis</label>
+                            <div class="input-group date" id="tgl_persetujuan_teknis" data-target-input="nearest">
+                                <input type="text" name="tgl_persetujuan_teknis" id="input_tgl_persetujuan_teknis" class="form-control datetimepicker-input" data-target="#tgl_persetujuan_teknis"/>
+                                <div class="input-group-append" data-target="#tgl_persetujuan_teknis" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div id="edit-modal3">
+
+
+
+                            <div class="form-group">
+                              <label for="inputClientCompany">Nama Pemohon Pertelaan</label>
+                              <input type="text" name="nama_pemohon_pertelaan" id="nama_pemohon_pertelaan" value="{{$pertelaans->nama_pemohon_pertelaan}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputClientCompany">Pemohonan Bangunan Pertelaan</label>
+                              <input type="text" name="pemohonan_bangunan_pertelaan" id="pemohonan_bangunan_pertelaan" value="{{$pertelaans->permohonan_bangunan_pertelaan}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputClientCompany">Kelurahan</label>
+                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" value="{{$pertelaans->kelurahan}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputProjectLeader">Kecamatan</label>
+                                <input type="text" name="kecamatan" id="kecamatan" class="form-control" value="{{$pertelaans->kecamatan}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputClientCompany">No IMB</label>
+                                <input type="text" name="no_imb" id="no_imb" value="{{$pertelaans->no_imb}}" class="form-control">
+                            </div>
+
+
+                            
+                          </div>
+                          <div class="form-group">
+                            <label>Tanggal IMB</label>
+                            <div class="input-group date" id="tgl_imb" data-target-input="nearest">
+                                <input type="text" name="tgl_imb" id="input_tgl_imb" class="form-control datetimepicker-input" data-target="#tgl_imb"/>
+                                <div class="input-group-append" data-target="#tgl_imb" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div id="edit-modal4">
+
+
+
+                            <div class="form-group">
+                              <label for="inputClientCompany">Atas Nama</label>
+                              <input type="text" name="atas_nama" id="atas_nama" value="{{$pertelaans->atas_nama}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputClientCompany">Nama Pemohon IMB</label>
+                              <input type="text" name="nama_pemohon_imb" id="nama_pemohon_imb" value="{{$pertelaans->nama_pemohon_imb}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputDescription">Alamat Persil IMB</label>
+                              <textarea name="alamat_persil_imb" id="alamat_persil_imb" class="form-control" rows="4">{{$pertelaans->alamat_persil_imb}}</textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="inputClientCompany">Penggunaan Bangunan</label>
+                              <input type="text" name="penggunaan_bangunan" id="penggunaan_bangunan" value="{{$pertelaans->penggunaan_bangunan}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputClientCompany">Luas Bangunan</label>
+                              <input type="number" name="luas_bangunan" id="luas_bangunan" value="{{$pertelaans->luas_bangunan}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                              <label for="inputClientCompany">Jumlah Lantai</label>
+                              <input type="number" name="jumlah_lantai" id="jumlah_lantai" value="{{$pertelaans->jumlah_lantai}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputProjectLeader">File SK Pertelaan</label>
+                                <input type="file" name="file_sk_pertelaan" id="file_sk_pertelaan" class="form-control" value="{{$pertelaans->file_sk_pertelaan}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputProjectLeader">File Perstek</label>
+                                <input type="file" name="file_perstek" id="file_perstek" class="form-control" value="{{$pertelaans->file_perstek}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputProjectLeader">File Gambar Pertelaan</label>
+                                <input type="file" name="file_gambar_pertelaan" id="file_gambar_pertelaan" class="form-control" value="{{$pertelaans->file_gambar_pertelaan}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputProjectLeader">File Gambar as Build</label>
+                                <input type="file" name="file_gambar_as_build" id="file_gambar_as_build" class="form-control" value="{{$pertelaans->file_gambar_as_build}}">
+                            </div>
+  
+                          </div>
+
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                </div>
+              {{-- </section> --}}
+            </div>
+            <div class="modal-footer-edit justify-content-between">
+              <button type="button" class="btn btn-default ml-3" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success float-right mb-3 mr-3 toastrDefaultSuccess">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+    </form>
+
+
+
 
                     @endforeach
 

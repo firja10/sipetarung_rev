@@ -266,7 +266,11 @@ Data Pengaduan
 
 
 
-                    <form action="{{route('store_pengaduan')}}" id="input-pengaduan" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('update_pengaduan_id', $pengaduans->id)}}" id="input-pengaduan" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      @method('PATCH')
+
+
                       <input type="hidden" name="id" id="id" class="form-control" value="`+res.id+`">
                       <input type="hidden" name="emp_file_lapangan" id="emp_file_lapangan">
                       <input type="hidden" name="emp_file_dokumen" id="emp_file_dokumen">

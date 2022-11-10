@@ -288,9 +288,143 @@ Data SKRK - IMB
                                       <div class="card card-primary">
                                         <div class="card-body" id="edit-modal">
                                        
-                                          
+                                            <div id="edit-modal1">
+
+
+
+                                              <input type="hidden" name="emp_scan_skrk" id="emp_scan_skrk">
+                                              <input type="hidden" name="emp_scan_imb" id="emp_scan_imb">
+                                              <input type="hidden" name="emp_scan_zoning" id="emp_scan_zoning">
+                                              <input type="hidden" name="emp_scan_gambar" id="emp_scan_gambar">
+                                              <input type="hidden" name="id_imb" id="id_imb" class="form-control" value="{{$skrk_imbs->id_imb}}">
+                                              <div class="form-group">
+                                                  <label for="inputProjectLeader">No UPT SKRK</label>
+                                                  <input type="text" name="no_upt" id="no_upt" class="form-control" value="{{$skrk_imbs->no_upt}}">
+                                              </div>
+                                              <div class="form-group">
+                                                  <label for="inputProjectLeader">No SK SKRK</label>
+                                                  <input type="text" name="no_skrk" id="no_skrk" class="form-control" value="{{$skrk_imbs->no_skrk}}">
+                                              </div>
+
+
 
                         
+                                            </div>
+                                            <div class="form-group">
+                                              <label>Tanggal SKRK</label>
+                                                <div class="input-group date" id="tgl_skrk" data-target-input="nearest">
+                                                    <input type="text" name="tgl_skrk" id="input_tgl_skrk" class="form-control datetimepicker-input" data-target="#tgl_skrk"/>
+                                                    <div class="input-group-append" data-target="#tgl_skrk" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="edit-modal2">
+
+{{-- 
+                                              <div class="form-group">
+                                                <label for="inputProjectLeader">Nama Pemohon SKRK</label>
+                                                <input type="text" name="pemohon" id="pemohon" class="form-control" value="{{$skrk_imbs->pemohon}}">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="inputDescription">Alamat Persil SKRK</label>
+                                              <textarea name="alamat" id="alamat" class="form-control" rows="4">{{$skrk_imbs->alamat_persil}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Permohonan</label>
+                                                <input type="text" name="permohonan" id="permohonan" class="form-control" value="{{$skrk_imbs->pemohon}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Peruntukan</label>
+                                                <input type="text" name="peruntukan" id="peruntukan" class="form-control" value="{{$skrk_imbs->peruntukan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputClientCompany">Kelurahan</label>
+                                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" value="{{$skrk_imbs->kelurahan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Kecamatan</label>
+                                                <input type="text" name="kecamatan" id="kecamatan" class="form-control" value="{{$skrk_imbs->kecamatan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">No UPT IMB</label>
+                                                <input type="text" name="no_upt_imb" id="no_upt_imb" class="form-control" value="{{$skrk_imbs->no_upt_imb}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">No SK IMB</label>
+                                                <input type="text" name="no_imb" id="no_imb" class="form-control" value="{{$skrk_imbs->no_imb}}">
+                                            </div> --}}
+
+
+
+
+                        
+                                            </div>
+                                            <div class="form-group">
+                                              <label>Tanggal IMB</label>
+                                                <div class="input-group date" id="tgl_imb" data-target-input="nearest">
+                                                    <input type="text" name="tgl_imb" id="input_tgl_imb" class="form-control datetimepicker-input" data-target="#tgl_imb"/>
+                                                    <div class="input-group-append" data-target="#tgl_imb" data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="edit-modal3">
+
+
+
+
+                                              {{-- <div class="form-group">
+                                                <label for="inputProjectLeader">Atas Nama</label>
+                                                <input type="text" name="atas_nama" id="atas_nama" class="form-control" value="{{$skrk_imbs->atas_nama}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Nama Pemohon IMB</label>
+                                                <input type="text" name="nama_pemoh" id="nama_pemoh" class="form-control" value="{{$skrk_imbs->pemohon}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Alamat Persil IMB</label>
+                                                <textarea name="persil_imb" id="persil_imb" class="form-control" rows="4">{{$skrk_imbs->persil_imb}}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Penggunaan</label>
+                                                <input type="text" name="penggunaan" id="penggunaan" class="form-control" value="{{$skrk_imbs->penggunaan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Luas Bangunan</label>
+                                                <input type="text" name="luas_bangunan" id="luas_bangunan" class="form-control" value="{{$skrk_imbs->luas_bangunan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Tinggi Bangunan</label>
+                                                <input type="text" name="tinggi_bangunan" id="tinggi_bangunan" class="form-control" value="{{$skrk_imbs->tinggi_bangunan}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">Jumlah Lantai</label>
+                                                <input type="text" name="jumlah_lantai" id="jumlah_lantai" class="form-control" value="{{$skrk_imbs->jumlah_lantai}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">File SKRK</label>
+                                                <input type="file" name="scan_skrk" id="scan_skrk" class="form-control" value="{{$skrk_imbs->scan_skrk}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">File Zoning</label>
+                                                <input type="file" name="scan_zoning" id="scan_zoning" class="form-control" value="{{$skrk_imbs->scan_zoning}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">File IMB</label>
+                                                <input type="file" name="scan_imb" id="scan_imb" class="form-control" value="{{$skrk_imbs->scan_imb}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputProjectLeader">File Gambar IMB</label>
+                                                <input type="file" name="scan_gamba" id="scan_gambar" class="form-control" value="{{$skrk_imbs->scan_gambar}}">
+                                            </div>
+ --}}
+
+
+
+
+                        
+                                            </div>
                                         </div>
                                         <!-- /.card-body -->
                                       </div>

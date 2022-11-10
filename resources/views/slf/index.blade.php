@@ -240,8 +240,82 @@ Data SLF
                         <td>{{$slfs->nama_bangunan}}</td>
                         <td>{{$slfs->nama_pemohon_slf}}</td>
                         <td>{{$slfs->atas_nama}}</td>
-                        <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('slf_id',$slfs->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditSlf">Update</button> </center></td>
+                        <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('slf_id',$slfs->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditSlf{{$slfs->gid}}">Update</button> </center></td>
                     </tr>
+
+
+
+
+
+
+                    
+<div class="modal fade" id="EditSlf{{$slfs->gid}}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data SLF</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{-- <section class="content"> --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                <div class="card-body" id="edit-modal">
+                  {{-- <form action="`+baseUrl+`"api/slf/store_json/"`+id+`" id="input-pengaduan" method="POST" enctype="multipart/form-data"> --}}
+                  <form action="{{route("update_slf_id", $slfs->gid)}}" id="input-slf" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PATCH')
+
+
+                    <div id="edit-modal1">
+                      
+                  </div>
+                  <div class="form-group">
+                    <label>Tanggal SLF</label>
+                    <div class="input-group date" id="tgl_slf" data-target-input="nearest">
+                        <input type="text" name="tgl_slf" value="input_tgl_slf" class="form-control datetimepicker-input" data-target="#tgl_slf"/>
+                        <div class="input-group-append" data-target="#tgl_slf" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div id="edit-modal2">
+                      
+                  </div>
+                  <div class="form-group">
+                    <label>Tanggal IMB</label>
+                    <div class="input-group date" id="tgl_imb" data-target-input="nearest">
+                        <input type="text" name="tgl_imb" id="input_tgl_imb" class="form-control datetimepicker-input" data-target="#tgl_imb"/>
+                        <div class="input-group-append" data-target="#tgl_imb" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div id="edit-modal3">
+                      
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+        {{-- </section> --}}
+      </div>
+      <div class="modal-footer-edit justify-content-between">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
 
                 @endforeach
 

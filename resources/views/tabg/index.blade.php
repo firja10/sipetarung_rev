@@ -240,8 +240,77 @@ Data TABG
                         <td>{{$tabgs->alamat_persil}}</td>
                         <td>{{$tabgs->penggunaan_bangunan}}</td>
                         <td>{{$tabgs->no_telp_pemohon}}</td>
-                        <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('tabg_id',$tabgs->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditTabg">Update</button> </center></td>
+                        <td><center> <br><a class = "btn btn-secondary mb-2" href = "{{route('tabg_id',$tabgs->gid )}}">View</a> <br> <button class="btn btn-primary" data-toggle="modal" data-target="#EditTabg{{$tabgs->gid}}">Update</button> </center></td>
                     </tr>
+
+
+
+                    
+<div class="modal fade" id="EditTabg{{$tabgs->gid}}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data Pertelaan</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{-- <section class="content"> --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                <div class="card-body" id="edit-modal">
+                  <form action="{{route("update_tabg_id", $tabgs->gid)}}" id="input-tabg" method="POST" enctype="multipart/form-data">
+                   @csrf
+                   @method('PATCH')
+
+
+                    <div class="form-group">
+                      <label>Tanggal TABG</label>
+                      <div class="input-group date" id="tgl_tabg" data-target-input="nearest">
+                          <input type="text" name="tgl_tabg" value="input_tgl_tabg" class="form-control datetimepicker-input" data-target="#tgl_tabg"/>
+                          <div class="input-group-append" data-target="#tgl_tabg" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                      </div>
+                    </div>
+                    <div id="edit-modal1">
+                        
+                    </div>
+                    <div class="form-group">
+                      <label>Tanggal Jam Sidang</label>
+                      <div class="input-group date" id="tgl_jam_sidang" data-target-input="nearest">
+                          <input type="text" name="tgl_jam_sidang" id="input_tgl_jam_sidang" class="form-control datetimepicker-input" data-target="#tgl_jam_sidang"/>
+                          <div class="input-group-append" data-target="#tgl_jam_sidang" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                      </div>
+                    </div>
+                    <div id="edit-modal2">
+                        
+                    </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+        {{-- </section> --}}
+      </div>
+      <div class="modal-footer-edit justify-content-between">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
 
                 @endforeach
 
