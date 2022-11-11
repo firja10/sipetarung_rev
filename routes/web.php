@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Imports\TowersImport;
+use App\Imports\UsersImport;
+use App\Imports\PenertibansImport;
+use App\Imports\PengaduansImport;
+use App\Imports\PertelaansImport;
+use App\Imports\SlfsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,5 +118,73 @@ Route::get('/tabg', [App\Http\Controllers\TabgController::class, 'index'])->name
 Route::get('/tabg/search_data', [App\Http\Controllers\TabgController::class, 'search_tabg'])->name('search_tabg')->middleware('auth');
 Route::get('/tabg/{id}', [App\Http\Controllers\TabgController::class, 'show'])->name('tabg_id')->middleware('auth');
 Route::patch('/tabg/{id}', [App\Http\Controllers\TabgController::class, 'update'])->name('update_tabg_id')->middleware('auth');
+
+
+
+
+
+/// Import CSV Tower ke Web 
+
+Route::post('import_menara', function () {
+    Excel::import(new TowersImport, request()->file('file_menara'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
+
+
+
+
+
+
+//// Belum, dikerjakan tanggal 11 Nopember 2022
+
+/// Import CSV Penertiban ke Web
+Route::post('import_penertiban', function () {
+    Excel::import(new PenertibansImport, request()->file('file_penertiban'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
+
+
+
+/// Import CSV Pengaduan ke Web
+Route::post('import_pengaduan', function () {
+    Excel::import(new PengaduansImport, request()->file('file_pengaduan'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
+
+
+
+
+/// Import CSV Pengaduan ke Web
+Route::post('import_pertelaan', function () {
+    Excel::import(new PertelaansImport, request()->file('file_pertelaan'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
+
+
+
+
+
+
+/// Import CSV SLF ke Web
+Route::post('import_slf', function () {
+    Excel::import(new SlfsImport, request()->file('file_slf'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
+
+
+
+
+
+
+/// Import CSV User ke Web 
+
+Route::post('import_user', function () {
+    Excel::import(new UsersImport, request()->file('file_user'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
+
+
+// Route::post('import_user', [App\Http\Controllers\TowerController::class, 'import_data_user'])->name('import_data_user')->middleware('auth');
+
 
 

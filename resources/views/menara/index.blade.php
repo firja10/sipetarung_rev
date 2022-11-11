@@ -230,6 +230,13 @@ Data Menara Sipetarung
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                
+
+                {{-- <button type="button" id="import-data-button" onclick="importData()" class="btn btn-primary mb-3">Import Data User</button> --}}
+
+
+                <button type="button" id="import-data-button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleImportModalUser">Import Data User</button>
+
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -362,6 +369,10 @@ Data Menara Sipetarung
                             {{-- </section> --}}
                           </div>
                           <div class="modal-footer-edit justify-content-between">
+
+
+
+                        
                             
                           </div>
                         </div>
@@ -478,6 +489,50 @@ Data Menara Sipetarung
       <!-- /.modal-dialog -->
     </div>
     
+
+
+
+
+
+       <!-- Modal -->
+       <div class="modal fade" id="exampleImportModalUser" tabindex="-1" role="dialog" aria-labelledby="exampleImportModalUserLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleImportModalUserLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            
+
+              <form action="import_menara" method="POST" enctype="multipart/form-data" >
+
+                @csrf
+
+                <div class="form-group">
+                  <input type="file" name="file_menara" id="file_menara" class = "form-control">
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+              </form>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
         
     @endsection
 
@@ -504,8 +559,29 @@ Data Menara Sipetarung
     @push('script')
 
 
+    <script>
+
+importButton.onclick = function () {
+  useCsvPlugin({
+    importerKey: "your-importer-key",
+    user: { userId: "12345" },
+    metadata: { anotherId: "1" }
+  });
+};
+
+    </script>
+
+
 
     <script>
+
+
+
+
+
+
+
+
 
 
 
@@ -545,7 +621,16 @@ $(function () {
 		//   "responsive": true, "lengthChange": false, "autoWidth": false,
 		//   "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
 		// }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-		table()
+		table();
+
+
+
+
+
+
+
+
+  
 	});
 
 

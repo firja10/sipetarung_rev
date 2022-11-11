@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 // use Yajra\DataTables;
 use Illuminate\Support\Facades\Storage;
 
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Imports\UsersImport;
+
 class TowerController extends Controller
 {
     /**
@@ -260,6 +264,22 @@ class TowerController extends Controller
 
         return redirect('/menara')->with('success_update', 'Data Telah Terupdate');
 
+
+    }
+
+
+
+
+
+
+    public function import_data_user(Request $request)
+    {
+        # code...
+
+
+        Excel::import(new UsersImport, request()->file('file_user'));
+
+        return redirect('/menara')->with('sukses_import', 'Data Berhasil Diimport');
 
     }
 
