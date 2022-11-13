@@ -246,16 +246,36 @@ class PenertibanController extends Controller
 
 
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Penertiban  $penertiban
      * @return \Illuminate\Http\Response
      */
-    public function edit(Penertiban $penertiban)
+    // public function edit(Penertiban $penertiban)
+    // {
+    //     //
+    // }
+
+
+    public function edit($id)
     {
         //
+        $penertibans = Penertiban::findOrFail($id);
+
+        return view('penertiban.index_id', compact('penertibans'));
+
+
+
     }
+
+
+
+
+
+
 
     /**
      * Update the specified resource in storage.

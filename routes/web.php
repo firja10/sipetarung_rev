@@ -7,6 +7,7 @@ use App\Imports\UsersImport;
 use App\Imports\PenertibansImport;
 use App\Imports\PengaduansImport;
 use App\Imports\PertelaansImport;
+use App\Imports\SkrksImport;
 use App\Imports\SlfsImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -91,6 +92,8 @@ Route::get('/penertiban/{id}', [App\Http\Controllers\PenertibanController::class
 
 Route::patch('/penertiban/{id}', [App\Http\Controllers\PenertibanController::class, 'update'])->name('update_penertiban_id')->middleware('auth');
 
+
+Route::get('/penertiban/{id}/edit', [App\Http\Controllers\PenertibanController::class, 'edit'])->name('penertiban_id_edit')->middleware('auth');
 
 
 
@@ -187,4 +190,8 @@ Route::post('import_user', function () {
 // Route::post('import_user', [App\Http\Controllers\TowerController::class, 'import_data_user'])->name('import_data_user')->middleware('auth');
 
 
+Route::post('import_skrk', function () {
+    Excel::import(new SkrksImport, request()->file('file_skrk'));
+    return redirect()->back()->with('success','Data Imported Successfully');
+});
 

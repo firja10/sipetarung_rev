@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@yield('title')</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset("plugins/fontawesome-free/css/all.min.css")}}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset("plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
+  <link rel="stylesheet" href="{{asset("plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
+  <link rel="stylesheet" href="{{asset("plugins/datatables-buttons/css/buttons.bootstrap4.min.css")}}">
+  <link rel="stylesheet" href="{{asset("plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css")}}">
+  <link rel="stylesheet" href="{{asset("plugins/toastr/toastr.min.css")}}">
+  <link rel="stylesheet" href="{{asset("dist/css/adminlte.min.css")}}">
+  <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+
+  <!-- leaflet css  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin="" />
+
+  <style>
+    /* ukuran peta */
+    #mapid {
+        height: 100%;
+    }
+    .jumbotron{
+        height: 100%;
+        border-radius: 0;
+    }
+    body{
+        background-color: #ebe7e1;
+    }
+</style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        {{-- <a href="{{asset("/")}}" class="nav-link">Home</a> --}}
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-user-circle"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-divider mt-2"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> Profil
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+          <div class="dropdown-divider mb-2"></div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{url("/")}}" class="brand-link">
+      <img src="{{asset("dist/img/DPRKPP-02.png")}}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light text-primary">DPRKPP</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="{{asset("/")}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Beranda
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>@yield('title')</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Tambah Data Penertiban</li> --}}
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+    @yield('content')
+
+
+
+      <!-- /.content -->
+  </div>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detail Data Penertiban</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <div id="modal-table" class="table-responsive">
+              
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
+        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-create">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Tambah Data Penertiban</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{-- <section class="content"> --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                <div class="card-body" id="create-modal">
+
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+        {{-- </section> --}}
+      </div>
+      <div class="modal-footer-create justify-content-between">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="modal-lg">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Data Penertiban</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{-- <section class="content"> --}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                <div class="card-body" id="edit-modal">
+
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+        {{-- </section> --}}
+      </div>
+      <div class="modal-footer-edit justify-content-between">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="modal-sm">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Hapus Data Penertiban</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Yakin Menghapus Data ?</p>
+      </div>
+      <div class="modal-footer-alert justify-content-between">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!-- jQuery -->
+<script src="{{asset("plugins/jquery/jquery.min.js")}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset("plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{asset("plugins/datatables/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-responsive/js/responsive.bootstrap4.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-buttons/js/dataTables.buttons.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-buttons/js/buttons.bootstrap4.min.js")}}"></script>
+<script src="{{asset("plugins/jszip/jszip.min.js")}}"></script>
+<script src="{{asset("plugins/pdfmake/pdfmake.min.js")}}"></script>
+<script src="{{asset("plugins/pdfmake/vfs_fonts.js")}}"></script>
+<script src="{{asset("plugins/datatables-buttons/js/buttons.html5.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-buttons/js/buttons.print.min.js")}}"></script>
+<script src="{{asset("plugins/datatables-buttons/js/buttons.colVis.min.js")}}"></script>
+<script src="{{asset("plugins/sweetalert2/sweetalert2.min.js")}}"></script>
+<script src="{{asset("plugins/toastr/toastr.min.js")}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset("dist/js/adminlte.min.js")}}"></script>
+<!-- leaflet js  -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+<script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('plugins/moment/moment.min.js')}}"></script>
+<script src="{{asset('plugins/inputmask/jquery.inputmask.min.js')}}"></script>
+<!-- Bootstrap Switch -->
+<script src="{{asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
+<!-- BS-Stepper -->
+<script src="{{asset('plugins/bs-stepper/js/bs-stepper.min.js')}}"></script>
+<script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<!-- Page specific script -->
+<script>
+	let baseUrl = "{{asset('/')}}";
+	console.log(baseUrl);
+  // $('.toastrDefaultSuccess').click(function() {
+  //   toastr.success('Data Di Perbarui.')
+  // });
+
+	$(document).ready(function () {
+    create_data()
+		table()
+    //Date picker
+    // $('#tgl_sk_peringatan1_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_peringatan2_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_peringatan3_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_penyegelan_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_bantib_penyegelan_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_pembongkaran_create').datetimepicker({
+    //     format: 'L'
+    // });
+    // $('#tgl_sk_bantib_pembongkaran_create').datetimepicker({
+    //     format: 'L'
+    // });
+	});
+  function table() {
+    $('#example2').DataTable({
+    "bDestroy": true,
+		"paging": true,
+		"lengthChange": false,
+		"searching": true,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false,
+		"responsive": true,
+    "processing": true,
+    "serverSide": true,
+		
+		});
+  }
+
+
+
+
+
+
+  function create_data(){
+    console.log($('#id_create').val());
+    // $('#create').html(
+    //   `
+    //   `
+    // )
+    var $tahapan1 = $('#tahapan1').hide();var $tahapan2 = $('#tahapan2').hide();var $tahapan3 = $('#tahapan3').hide();var $tahapan4 = $('#tahapan4').hide();var $tahapan5 = $('#tahapan5').hide();var $tahapan6 = $('#tahapan6').hide();var $tahapan7 = $('#tahapan7').hide();var $tahapan8 = $('#tahapan8').hide();var $tahapan9 = $('#tahapan9').hide();
+    // var $groundSprayTr = $('#id_B').closest('tr').hide();
+    $('#jenis_create').change(function() {
+        var selectedValue = $(this).val();
+        if(selectedValue  === 'SKRD Tidak Sesuai IMB') {
+          $tahapan1.show();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        } else if (selectedValue === 'SKRD Tidak memiliki IMB') {
+          $tahapan1.hide();$tahapan2.show();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'IMB - Berkas Dikembalikan') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.show();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'SKRK Belum ber IMB') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.show();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'SLF') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.show();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'Bangunan Tidak ber IMB (Tanah Aset)') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.show();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'Bangunan Tidak ber IMB (Persil)') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.show();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'Bangunan Tidak Sesuai dengan IMB (Persil)') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.show();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }else if (selectedValue === 'Bangunan ber IMB (Sewa Tanah Habis Masa Berlaku)') {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.show();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        } else {
+          $tahapan1.hide();$tahapan2.hide();$tahapan3.hide();$tahapan4.hide();$tahapan5.hide();$tahapan6.hide();$tahapan7.hide();$tahapan8.hide();$tahapan9.hide();
+          $('#tahapan1_create').prop('selectedIndex', 0);
+          $('#tahapan2_create').prop('selectedIndex', 0);
+          $('#tahapan3_create').prop('selectedIndex', 0);
+          $('#tahapan4_create').prop('selectedIndex', 0);
+          $('#tahapan5_create').prop('selectedIndex', 0);
+          $('#tahapan6_create').prop('selectedIndex', 0);
+          $('#tahapan7_create').prop('selectedIndex', 0);
+          $('#tahapan8_create').prop('selectedIndex', 0);
+          $('#tahapan9_create').prop('selectedIndex', 0);
+        }
+    });
+    // $('#footer-create').html(
+    //     `<a type="button" href="{{asset("/")}}" class="btn btn-default ml-3">Back</a>
+    //     <button type="button" type = "submit" class="btn btn-success float-right mb-3 mr-3 toastrDefaultSuccess">Save changes</button>
+    //     </form>`
+    // )
+  }
+
+
+
+
+
+
+
+  function store_json(param){
+    if (param == 'create') {
+        var data = {
+            id: $("#id_create").val(),
+            nama: $("#nama_create").val(),
+            alamat: $("#alamat_create").val(),
+            kelurahan: $("#kelurahan_create").val(),
+            kecamatan: $("#kecamatan_create").val(),
+            keterangan: $("#keterangan_create").val(),
+            latitude: $("#latitude_create").val(),
+            longitude: $("#longitude_create").val(),
+        }
+    } else {
+        var data = {
+            id: $("#id").val(),
+            nama: $("#nama").val(),
+            alamat: $("#alamat").val(),
+            kelurahan: $("#kelurahan").val(),
+            kecamatan: $("#kecamatan").val(),
+            keterangan: $("#keterangan").val(),
+        }
+    }
+    console.log(data)
+    // const fd = new FormData(document.getElementById('input-penertiban'));
+    // $.ajax({
+    //     type: "POST",
+    //     processData: false, 
+    //     contentType: false,
+    //     dataType: "json",
+    //     headers: {
+    //       "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    //       "Authorization":"Bearer " + localStorage.getItem("token")
+    //     },
+    //     data: fd,
+    //     url: baseUrl+"api/penertiban/store_json",
+    //     success: function (response) {
+    //       window.location.href = baseUrl;
+    //       $('#modal-create').modal('hide')
+    //       $('#modal-lg').modal('hide')
+    //       table()
+    //     }
+    // });
+  }
+  function alert(id) {
+    $('.modal-footer-alert').html(
+      `
+        <button type="button" class="btn btn-default ml-3" data-dismiss="modal">Close</button>
+        <button type="button" onclick="delete_json(`+id+`)" class="btn btn-danger float-right mb-3 mr-3">Hapus</button>
+      `
+    )
+  }
+  function delete_json(id){
+    $('#modal-sm').modal('hide')
+    console.log(id)
+    alert('delete');
+    $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+          "Authorization":"Bearer " + localStorage.getItem("token")
+        },
+        url: baseUrl+"api/penertiban/delete_json/"+id,
+        success: function (response) {
+          table()
+        }
+    });
+  }
+</script>
+<script>
+  // set lokasi latitude dan longitude, lokasinya kota palembang 
+  var mymap = L.map('mapid').setView([-7.288828, 112.761848], 14);
+  //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token      
+  L.tileLayer(
+      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmFiaWxjaGVuIiwiYSI6ImNrOWZzeXh5bzA1eTQzZGxpZTQ0cjIxZ2UifQ.1YMI-9pZhxALpQ_7x2MxHw', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 20,
+          id: 'mapbox/streets-v11', //menggunakan peta model streets-v11 kalian bisa melihat jenis-jenis peta lainnnya di web resmi mapbox
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: 'your.mapbox.access.token'
+      }).addTo(mymap);
+
+
+  // buat variabel berisi fugnsi L.popup 
+  var popup = L.popup();
+
+  // buat fungsi popup saat map diklik
+  function onMapClick(e) {
+      // popup
+      //     .setLatLng(e.latlng)
+      //     .setContent("koordinatnya adalah " + e.latlng
+      //         .toString()
+      //         ) //set isi konten yang ingin ditampilkan, kali ini kita akan menampilkan latitude dan longitude
+      //     .openOn(mymap);
+
+      document.getElementById('latitude').value = e.latlng.lat //value pada form latitde, longitude akan berganti secara otomatis
+      document.getElementById('longitude').value = e.latlng.lng //value pada form latitde, longitude akan berganti secara otomatis
+  }
+  mymap.on('click', onMapClick); //jalankan fungsi
+
+</script>
+</body>
+</html>

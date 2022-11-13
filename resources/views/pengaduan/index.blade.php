@@ -233,6 +233,16 @@ Data Pengaduan
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+
+
+
+
+                <button type="button" id="import-data-button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleImportModalPengaduan">Import Data Pengaduan</button>
+
+
+
+
+
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -494,6 +504,64 @@ Data Pengaduan
 
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="import_pengaduan" method="POST" enctype="multipart/form-data" >
+
+  @csrf
+
+   <!-- Modal -->
+   <div class="modal fade" id="exampleImportModalPengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleImportModalPengaduanLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleImportModalPengaduanLabel">Import Data Menara</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        
+
+
+
+            <div class="form-group">
+              <input type="file" name="file_pengaduan" id="file_pengaduan" class = "form-control">
+            </div>
+{{-- 
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div> --}}
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</form>
 
 
 

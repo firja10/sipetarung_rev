@@ -230,6 +230,11 @@ Data Pertelaan
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+
+                <button type="button" id="import-data-button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleImportModalPertelaan">Import Data Pertelaan</button>
+
+
+
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -475,6 +480,78 @@ Data Pertelaan
 
     
 @section('modals')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="import_pertelaan" method="POST" enctype="multipart/form-data" >
+
+  @csrf
+
+   <!-- Modal -->
+   <div class="modal fade" id="exampleImportModalPertelaan" tabindex="-1" role="dialog" aria-labelledby="exampleImportModalPertelaanLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleImportModalPertelaanLabel">Import Data Pertelaan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        
+
+
+
+            <div class="form-group">
+              <input type="file" name="file_pertelaan" id="file_pertelaan" class = "form-control">
+            </div>
+{{-- 
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div> --}}
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 @endsection
 
