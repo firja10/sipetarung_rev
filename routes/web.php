@@ -23,6 +23,15 @@ use Maatwebsite\Excel\Facades\Excel;
 */
 
 
+Route::get('/login_dua', function () {
+    return view('auth.pages.login_dua');
+});
+
+
+Route::get('/login_tiga', function () {
+    return view('auth.pages.login_tiga');
+});
+
 
 Auth::routes();
 

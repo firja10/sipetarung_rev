@@ -19,7 +19,7 @@ class SkrkController extends Controller
     {
         //
 
-        $skrk = DB::table('imb')->limit(10000)->get();
+        $skrk = DB::table('imb')->limit(1000)->get();
         return view('skrk-imb.index', compact('skrk'));
 
     }
