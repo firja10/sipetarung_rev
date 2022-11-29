@@ -173,16 +173,16 @@ margin-left: 4px;
 				</form>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
 
-					<li><a href="#">Login Akun Kabid</a></li>
-					<li><a href="#">Login Akun Kadis</a></li>
-
+				<div class="d-flex justify-content-center">
+					<li style="list-style: none" class='mr-auto '><a href="#" class="btn btn-danger">Login Akun Kabid</a></li>
+					<li style="list-style: none"><a href="#"  class="btn btn-primary">Login Akun Kadis</a></li>
 				{{-- Login Akun Lain --}}
                     <br>
-
                     {{-- <a href="#">Sign Up</a> --}}
 				</div>
+				
+
 				<div class="d-flex justify-content-center">
                     {{-- <ul>
                         <li><a href="#">Login Akun Kabid</a></li>
