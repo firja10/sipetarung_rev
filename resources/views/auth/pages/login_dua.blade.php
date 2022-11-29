@@ -174,16 +174,20 @@ margin-left: 4px;
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-				Login Akun Lain
+
+					<li><a href="#">Login Akun Kabid</a></li>
+					<li><a href="#">Login Akun Kadis</a></li>
+
+				{{-- Login Akun Lain --}}
                     <br>
 
                     {{-- <a href="#">Sign Up</a> --}}
 				</div>
 				<div class="d-flex justify-content-center">
-                    <ul>
+                    {{-- <ul>
                         <li><a href="#">Login Akun Kabid</a></li>
                         <li><a href="#">Login Akun Kadis</a></li>
-                    </ul>
+                    </ul> --}}
 					
                     {{-- <a href="#">Forgot your password?</a> --}}
 				</div>
