@@ -242,7 +242,7 @@ class TowerController extends Controller
         }
 
 
-        Tower::where('gid', $id)->update([
+w        Tower::where('gid', $id)->update([
 
             'gid' => $request->gid,
             'provider' => $request->provider,

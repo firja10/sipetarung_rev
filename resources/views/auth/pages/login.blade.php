@@ -1,111 +1,203 @@
-<!doctype html>
-<html class="no-js" lang="">
 
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Aplikasi SiPetarung</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon -->
+	<title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    {{-- <link rel="apple-touch-icon" sizes="57x57" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://sigis.surabaya.go.id/assets/img/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="https://sigis.surabaya.go.id/assets/img/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://sigis.surabaya.go.id/assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://sigis.surabaya.go.id/assets/img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://sigis.surabaya.go.id/assets/img/favicon/favicon-16x16.png"> --}}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://sigis.surabaya.go.id/assets/login/css/bootstrap.min.css">
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="https://sigis.surabaya.go.id/assets/login/css/fontawesome-all.min.css">
-    <!-- Vegas CSS -->
-    <link rel="stylesheet" href="https://sigis.surabaya.go.id/assets/login/css/vegas.min.css">
-    <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="{{asset('assets/font/flaticon.css')}}">
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" integrity="sha512-6f7HT84a/AplPkpSRSKWqbseRTG4aRrhadjZezYQ0oVk/B+nm/US5KzQkyyOyh0Mn9cyDdChRdS9qaxJRHayww==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
-    <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://sigis.surabaya.go.id/assets/login/style.css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+	<!--Custom styles-->
+	
+    {{-- <link rel="stylesheet" type="text/css" href="styles.css"> --}}
+
+
+
+    <style>
+
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+/* background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg'); */
+background-image: url('/IMG/1.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+
+
+    </style>
+
+
+
+
+
 </head>
-
 <body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <section class="fxt-template-animation fxt-template-layout29">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide" data-vegas-options='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "{{asset('IMG/1.jpg')}}"},{"src": "{{asset('IMG/2.jpg')}}"},{"src": "{{asset('IMG/3.jpg')}}"}, {"src": "{{asset('IMG/4.jpg')}}"}]}'>
-                    {{-- <div class="fxt-page-switcher">
-                        <a href="#!" class="switcher-text1 active">Login</a>
-                    </div> --}}
-                </div>
-                <div class="col-md-6 col-12 fxt-bg-color">
-                    <div class="fxt-content">
-                        <div class="fxt-header">
-                            <a style="margin-bottom: 50px" href="#!" class="fxt-logo"><img src="{{asset('IMG/LOGO.png')}}" alt="Logo"></a>
-                        </div>
-                        <div class="fxt-form">
-                            <div class="fxt-transformY-50 fxt-transition-delay-1">
-                                <h2>Selamat Datang. </h2>
-                            </div>
-                            <div class="fxt-transformY-50 fxt-transition-delay-2">
-                                <p>Sistem Informasi Satu Peta</p>
-                            </div>
-                            <form method="POST" action="{{ route('login') }}" >
-                                @csrf
-                                {{-- <input type="hidden" name="_token" value="Yc1CBfaqEnU2bxvOeJqatLk4VKeUdTOi7Iwc0Soo"> --}}
-                                <div class="form-group">
-                                    <div class="fxt-transformY-50 fxt-transition-delay-4">
-                                        <input type="text" class="form-control" name="name" placeholder="Username" required="required">
-                                        <i class="flaticon-user"></i>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="fxt-transformY-50 fxt-transition-delay-5">
-                                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-                                        <i class="flaticon-padlock"></i>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="fxt-transformY-50 fxt-transition-delay-6">
-                                        <div class="fxt-content-between">
-                                            <button type="submit" class="fxt-btn-fill">Log in</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- jquery-->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/jquery-3.5.0.min.js"></script>
-    <!-- Popper js -->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/bootstrap.min.js"></script>
-    <!-- Imagesloaded js -->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/imagesloaded.pkgd.min.js"></script>
-    <!-- Vegas js -->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/vegas.min.js"></script>
-    <!-- Validator js -->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/validator.min.js"></script>
-    <!-- Custom Js -->
-    <script src="https://sigis.surabaya.go.id/assets/login/js/main.js"></script>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card border-0">
+			<div class="card-header bg-white">
+<center>
+    <img src="{{asset('IMG/LOGO.png')}}" alt="" style="width:205px;">
 
+</center>
+     
+
+				{{-- <h3>Sign In</h3> --}}
+				{{-- <div class="d-flex justify-content-end social_icon"> --}}
+                {{-- <div class="d-flex justify-content-center social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div> --}}
+			</div>
+			<div class="card-body">
+				<form method="POST" action="{{ route('login') }}">
+                    @csrf
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						{{-- <input type="text" class="form-control" placeholder="Username"> --}}
+                        <input type="text" class="form-control" name="name" placeholder="Username" required="required">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						{{-- <input type="password" class="form-control" placeholder="Password"> --}}
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+					</div>
+					{{-- <div class="row align-items-center remember">
+						<input type="checkbox">Remember Me
+					</div> --}}
+					<div class="form-group">
+						{{-- <input type="submit" value="Login" class="btn float-right login_btn"> --}}
+                        <center>
+                            {{-- <input type="submit" value="Login" class="btn login_btn"> --}}
+                            <button type="submit" class="btn login_btn"> Login </button>
+                        </center>
+                      
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+
+				<div class="d-flex justify-content-center">
+					<li style="list-style: none" class='mr-auto '><a href="#" class="btn btn-danger">Login Akun Kabid</a></li>
+					<li style="list-style: none"><a href="#"  class="btn btn-primary">Login Akun Kadis</a></li>
+				{{-- Login Akun Lain --}}
+                    <br>
+                    {{-- <a href="#">Sign Up</a> --}}
+				</div>
+				
+
+				<div class="d-flex justify-content-center">
+                    {{-- <ul>
+                        <li><a href="#">Login Akun Kabid</a></li>
+                        <li><a href="#">Login Akun Kadis</a></li>
+                    </ul> --}}
+					
+                    {{-- <a href="#">Forgot your password?</a> --}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
-
 </html>
